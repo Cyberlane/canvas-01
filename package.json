@@ -1,0 +1,27 @@
+{
+  "name": "canvas-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyberlane/canvas-01.git"
+  },
+  "author": "Justin Nel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cyberlane/canvas-01/issues"
+  },
+  "homepage": "https://github.com/Cyberlane/canvas-01#readme",
+  "devDependencies": {
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb-base": "^11.1.1",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
