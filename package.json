@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "browserify src/game.js -t [ babelify --presets [ latest ] ] | uglifyjs > app/game.js",
+    "build": "browserify src/index.js -t [ babelify --presets [ latest ] ] | uglifyjs > app/game.js",
     "postinstall": "npm run build"
   },
   "repository": {

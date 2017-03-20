@@ -67,11 +67,9 @@ const createCanvas = (width, height, { window, document }) => {
   });
 };
 
-const setup = () => {
+export default (window, document) => {
   createCanvas(400, 600, { window, document });
   bird = new Bird(canvas);
   score = new Score(canvas);
-  pipes.push(new Pipe(canvas)); // maybe can remove this?
+  pipes.push(new Pipe(canvas));
 };
-
-setup();
