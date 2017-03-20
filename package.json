@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "browserify src/game.js -t [ babelify --presets [ latest ] ] | uglifyjs > app/game.js",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,9 +19,13 @@
   },
   "homepage": "https://github.com/Cyberlane/canvas-01#readme",
   "devDependencies": {
+    "babel-preset-latest": "^6.24.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
     "eslint": "^3.17.1",
     "eslint-config-airbnb-base": "^11.1.1",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "uglify": "^0.1.5"
   },
   "dependencies": {
     "express": "^4.15.2"
