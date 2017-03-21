@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "build": "browserify src/index.js -t [ babelify --presets [ latest ] ] | uglifyjs > app/game.js",
+    "watch": "watchify src/index.js -t [ babelify --presets [ latest ] ] -o 'uglifyjs > app/game.js'",
     "postinstall": "npm run build"
   },
   "repository": {
@@ -25,7 +26,8 @@
     "eslint": "^3.17.1",
     "eslint-config-airbnb-base": "^11.1.1",
     "eslint-plugin-import": "^2.2.0",
-    "uglify": "^0.1.5"
+    "uglify": "^0.1.5",
+    "watchify": "^3.9.0"
   },
   "dependencies": {
     "express": "^4.15.2"

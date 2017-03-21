@@ -59,9 +59,19 @@ const createCanvas = (width, height, { window, document }) => {
   setInterval(draw, 20);
   window.addEventListener('keydown', (e) => {
     key = e.keyCode;
+    e.preventDefault();
     keyPressed();
   });
-  window.addEventListener('keyup', () => {
+  window.addEventListener('touchstart', () => {
+    key = 32;
+    keyPressed();
+  });
+  window.addEventListener('keyup', (e) => {
+    key = false;
+    e.preventDefault();
+    keyPressed();
+  });
+  window.addEventListener('touchend', () => {
     key = false;
     keyPressed();
   });
