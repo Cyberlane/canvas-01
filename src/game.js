@@ -39,7 +39,7 @@ const draw = () => {
     .filter(pipe => !pipe.offscreen());
 
   if (frameCount % 100 === 0) {
-    pipes.push(new Pipe(canvas));
+    pipes.push(new Pipe(canvas, bird.height));
   }
   score.show();
 };
@@ -103,5 +103,5 @@ export default (window, document) => {
   createCanvas(width, height - 100, { window, document });
   bird = new Bird(canvas);
   score = new Score(canvas);
-  pipes.push(new Pipe(canvas));
+  pipes.push(new Pipe(canvas, bird.height));
 };

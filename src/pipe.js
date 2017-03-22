@@ -1,10 +1,11 @@
 const random = (min, max) =>
   Math.floor(Math.random() * max) + min;
 
-function Pipe(canvas) {
+function Pipe(canvas, minGapHeight) {
   const context = canvas.getContext('2d');
-  this.top = random(1, canvas.height / 2);
-  this.bottom = random(1, canvas.height / 2);
+  const getRandomHeight = () => random(1, (canvas.height - (minGapHeight / 2)) / 2);
+  this.top = getRandomHeight();
+  this.bottom = getRandomHeight();
   this.x = canvas.width;
   this.width = 20;
   this.speed = 2;
