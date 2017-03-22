@@ -78,6 +78,13 @@ const createCanvas = (width, height, { window, document }) => {
   }, { passive: false });
 };
 
+const getClientWidth = (document) => {
+  const width = document.body.clientWidth;
+  return width > 725
+    ? width - 150
+    : width;
+};
+
 const getClientHeight = (document) => {
   const { body, documentElement } = document;
   return Math.max(
@@ -91,9 +98,9 @@ const getClientHeight = (document) => {
 };
 
 export default (window, document) => {
-  // createCanvas(400, 600, { window, document });
+  const width = getClientWidth(document);
   const height = getClientHeight(document);
-  createCanvas(document.body.clientWidth, height - 100, { window, document });
+  createCanvas(width, height - 100, { window, document });
   bird = new Bird(canvas);
   score = new Score(canvas);
   pipes.push(new Pipe(canvas));
