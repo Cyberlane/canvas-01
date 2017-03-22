@@ -62,23 +62,38 @@ const createCanvas = (width, height, { window, document }) => {
     e.preventDefault();
     keyPressed();
   });
-  window.addEventListener('touchstart', () => {
+  window.addEventListener('touchstart', (e) => {
     key = 32;
     keyPressed();
-  });
+  }, { passive: false });
   window.addEventListener('keyup', (e) => {
     key = false;
     e.preventDefault();
     keyPressed();
   });
-  window.addEventListener('touchend', () => {
+  window.addEventListener('touchend', (e) => {
     key = false;
+    e.preventDefault();
     keyPressed();
-  });
+  }, { passive: false });
+};
+
+const getClientHeight = (document) => {
+  const { body, documentElement } = document;
+  return Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    body.getBoundingClientRect().height,
+    documentElement.clientHeight,
+    documentElement.scrollHeight,
+    documentElement.offsetHeight,
+  );
 };
 
 export default (window, document) => {
-  createCanvas(400, 600, { window, document });
+  // createCanvas(400, 600, { window, document });
+  const height = getClientHeight(document);
+  createCanvas(document.body.clientWidth, height - 100, { window, document });
   bird = new Bird(canvas);
   score = new Score(canvas);
   pipes.push(new Pipe(canvas));
