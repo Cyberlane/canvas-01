@@ -10,6 +10,7 @@ function Pipe(canvas, minGapHeight) {
   this.width = 20;
   this.speed = 2;
   this.highlight = false;
+  this.scoreTaken = false;
 
   this.hits = (bird) => {
     if (bird.y < this.top || bird.y > canvas.height - this.bottom - bird.height) {
@@ -22,7 +23,7 @@ function Pipe(canvas, minGapHeight) {
     return false;
   };
   this.passed = bird => (
-    bird.x === this.x
+    bird.x >= this.x
   );
   this.show = () => {
     context.fillStyle = 'black';
@@ -35,7 +36,13 @@ function Pipe(canvas, minGapHeight) {
   this.update = () => {
     this.x -= this.speed;
   };
+  this.setSpeed = (speed) => {
+    this.speed = speed;
+  };
   this.offscreen = () => this.x < -canvas.width;
+  this.takeScore = () => {
+    this.scoreTaken = true;
+  };
 }
 
 export default Pipe;

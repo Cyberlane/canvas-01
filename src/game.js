@@ -11,6 +11,8 @@ let key;
 let frameCount = 0;
 let gameOver = false;
 
+const getPipeSpeed = (currentScore) => (parseInt(currentScore / 5, 10) + 1) * 2;
+
 const clearArea = () => {
   context.clearRect(0, 0, canvas.width, canvas.height);
 };
@@ -20,6 +22,7 @@ const draw = () => {
     return;
   }
   clearArea();
+  const pipeSpeed = getPipeSpeed(score.count);
   frameCount += 1;
   bird.update();
   bird.show();
@@ -31,9 +34,11 @@ const draw = () => {
       }
       pipe.show();
       pipe.update();
-      if (pipe.passed(bird)) {
+      if (pipe.passed(bird) && !pipe.scoreTaken) {
         score.increase();
+        pipe.takeScore();
       }
+      pipe.setSpeed(pipeSpeed);
       return pipe;
     })
     .filter(pipe => !pipe.offscreen());
